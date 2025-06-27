@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Hasta Arama (SQLi)</title></head>
+<body>
+    <h2>Hasta Arama (SQL Injection Açığı)</h2>
+    <form method="POST">
+        <label>TC Kimlik No:</label>
+        <input type="text" name="tc">
+        <button type="submit">Ara</button>
+    </form>
+
+    {% if result %}
+        <h3>Sonuçlar:</h3>
+        <pre>{{ result }}</pre>
+    {% endif %}
+</body>
+</html>

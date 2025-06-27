@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yedekleme</title>
+</head>
+<body>
+    <h2>Yedekleme Sayfası</h2>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+
+    <form method="POST">
+        <button type="submit">Backup Al</button>
+    </form>
+
+    <h3>Yedekleme Logları:</h3>
+    <pre style="background-color:#f0f0f0; padding:10px;">{{ log }}</pre>
+
+    <a href="/dashboard">← Dashboard'a Dön</a>
+</body>
+</html>

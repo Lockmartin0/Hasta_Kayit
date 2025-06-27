@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Hasta Bilgisi</title></head>
+<body>
+    <h2>Hasta Bilgileri (IDOR Açığı)</h2>
+    {% if patient %}
+        <p>Ad: {{ patient[1] }}</p>
+        <p>Soyad: {{ patient[2] }}</p>
+        <p>TC: {{ patient[3] }}</p>
+        <p>Telefon: {{ patient[4] }}</p>
+    {% else %}
+        <p>Hasta bulunamadı.</p>
+    {% endif %}
+</body>
+</html>

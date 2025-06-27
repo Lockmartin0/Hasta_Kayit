@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş Yap</title>
+</head>
+<body>
+    <h2>Giriş Yap</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <p style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <label>Kullanıcı Adı:</label><br>
+        <input type="text" name="username" required><br><br>
+
+        <label>Şifre:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <button type="submit">Giriş Yap</button>
+    </form>
+
+    <p>Hesabınız yok mu? <a href="/register">Kayıt olun</a></p>
+</body>
+</html>
