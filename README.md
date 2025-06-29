@@ -16,20 +16,22 @@ Uygulama eğitim amaçlı tasarlanmıştır.
 ---
 
 ## 🗃️ Dosya Yapısı
-
-├── Hasta_Kayit-main/
-│ ├── app.py # Ana Flask uygulaması
-│ ├── backup_script.py # Yedekleme scripti
-│ ├── templates/ # HTML şablonları
-│    ├── backup.html #Backup alınan sayfa
-│    ├── dashboard.html #Hasta kaydı yapılan sayfa
-│    ├── login.html #Giriş yapılan sayfa
-│    ├── patient.html #IDOR zafiyetli sayfa
-│    ├── register.html # Yeni kayıt sayfası
-│    ├── search.html #Sql zafiyetli sayfa
-│ ├── backups / # Veritabanının backup dosyaları
-│ ├──Dockerfile # Web servisi için Dockerfile
-│ ├──docker-compose.yml # Tüm sistemi ayağa kaldıran yapı
-│ ├──requirements.txt # Python bağımlılıkları
-│ ├──init.sql # Mysql database
-│ ├──README.md
+Hasta_Kayit-main/
+│
+├── app.py                  # Ana Flask uygulaması
+├── backup_script.py        # Yedekleme scripti (mysqldump ile)
+├── Dockerfile              # Web servisi için Dockerfile
+├── docker-compose.yml      # Flask ve MySQL'i birlikte ayağa kaldırır
+├── requirements.txt        # Flask, pymysql vs. bağımlılıklar
+├── init.sql                # MySQL için tablo oluşturma scripti
+│
+├── templates/
+│   ├── backup.html         # Backup alınan sayfa
+│   ├── dashboard.html      # Hasta kaydı yapılan sayfa
+│   ├── login.html          # Giriş yapılan sayfa
+│   ├── register.html       # Yeni kullanıcı kaydı
+│   ├── search.html         # SQL Injection zafiyetli arama
+│   ├── patient.html        # IDOR zafiyetli hasta görüntüleme
+│
+├── backups/                # Veritabanı yedeklerinin saklandığı klasör
+└── README.md               # Bu dosya
