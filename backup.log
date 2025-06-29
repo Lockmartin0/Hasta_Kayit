@@ -1,4 +1,7 @@
 2025-06-27_02-01-40 - EXCEPTION - [WinError 2] Sistem belirtilen dosyayý bulamýyor
 2025-06-27_02-03-34 - EXCEPTION - [WinError 2] Sistem belirtilen dosyayý bulamýyor
 2025-06-27_02-03-34 - EXCEPTION - [WinError 2] Sistem belirtilen dosyayý bulamýyor
-asdasdasdasdasdasdas
+asdasdasdasdasdasdas2025-06-29_00-11-44 - EXCEPTION - [WinError 2] Sistem belirtilen dosyayý bulamýyor
+2025-06-28_22-07-53 - ERROR - mysqldump: Got error: 2002: "Can't connect to local server through socket '/run/mysqld/mysqld.sock' (2)" when trying to connect
+2025-06-28_23-15-44 - ERROR - mysqldump: Got error: 2002: "Can't connect to local server through socket '/run/mysqld/mysqld.sock' (2)" when trying to connect
+2025-06-28_23-15-49 - ERROR - mysqldump: Got error: 2002: "Can't connect to local server through socket '/run/mysqld/mysqld.sock' (2)" when trying to connect

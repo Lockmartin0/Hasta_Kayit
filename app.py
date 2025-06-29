@@ -8,13 +8,19 @@ from werkzeug.security import check_password_hash
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
+import os
 db = pymysql.connect(
-    host="localhost",
+    host="db",  # container ismi
     user="root",
-    password="Kendi mysql şifreniz!!!!", # Kendi makinanızda kurulu olan mysql şifresini buraya yazınız.
+    password="1234",
     database="hasta_kayit"
 )
+
+
 cursor = db.cursor()
+@app.route('/')
+def home():
+    return redirect('/login')
 
 @app.route('/search', methods=['GET', 'POST'])
 # SQLi zafiyeti için.
@@ -33,10 +39,15 @@ def search():
 
 @app.route('/patient/<int:id>')
 def view_patient(id):
-    # IDOR zafiyeti için
     cursor.execute("SELECT * FROM patients WHERE id = %s", (id,))
     patient = cursor.fetchone()
+
+    if not patient:
+        flash("Bu ID'ye sahip hasta bulunamadı.", "warning")
+        return redirect('/dashboard')  # Veya başka güvenli bir sayfa
+
     return render_template("patient.html", patient=patient)
+
 #Lfi zafiyeti için.
 @app.route('/viewlog')
 def viewlog():
@@ -64,10 +75,11 @@ def backup():
 
     log_content = ""
     if os.path.exists("backup.log"):
-        with open("backup.log", "r") as log_file:
+        with open("backup.log", "r", encoding="utf-8", errors="ignore") as log_file:
             log_content = log_file.read()
 
     return render_template("backup.html", log=log_content, message=message)
+
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
@@ -128,11 +140,13 @@ def register():
             db.commit()
             flash('Kayıt başarılı! Artık giriş yapabilirsiniz.', 'success')
             return redirect('/login')
-        except mysql.connector.Error as err:
+        except Exception as err:
             db.rollback()
             flash(f'Hata oluştu: {err}', 'danger')
 
     return render_template('register.html')
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
+

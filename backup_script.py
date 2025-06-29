@@ -1,11 +1,10 @@
 import os
-import time
 import subprocess
 from datetime import datetime
 
 DB_NAME = "hasta_kayit"
 DB_USER = "root"
-DB_PASSWORD = "Kendi mysql şifreniz!!!!", # Kendi makinanızda kurulu olan mysql şifresini buraya yazınız.
+DB_PASSWORD = "1234"  # ← VİRGÜL KALDIRILDI
 BACKUP_DIR = "backups"
 LOG_FILE = "backup.log"
 
