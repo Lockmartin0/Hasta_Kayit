@@ -22,43 +22,6 @@ cursor = db.cursor()
 def home():
     return redirect('/login')
 
-@app.route('/search', methods=['GET', 'POST'])
-# SQLi zafiyeti için.
-def search():
-    result = None
-    if request.method == 'POST':
-        tc = request.form['tc']
-        query = f"SELECT * FROM patients WHERE tc_kimlik_no = '{tc}'"
-        try:
-            cursor.execute(query)
-            result = cursor.fetchall()
-        except Exception as e:
-            result = f"Hata: {e}"
-
-    return render_template('search.html', result=result)
-
-@app.route('/patient/<int:id>')
-def view_patient(id):
-    cursor.execute("SELECT * FROM patients WHERE id = %s", (id,))
-    patient = cursor.fetchone()
-
-    if not patient:
-        flash("Bu ID'ye sahip hasta bulunamadı.", "warning")
-        return redirect('/dashboard')  # Veya başka güvenli bir sayfa
-
-    return render_template("patient.html", patient=patient)
-
-#Lfi zafiyeti için.
-@app.route('/viewlog')
-def viewlog():
-    filename = request.args.get('file')
-    try:
-        with open(filename, 'r') as f:
-            content = f.read()
-    except Exception as e:
-        content = f"Hata: {e}"
-    return f"<h2>{filename} içeriği:</h2><pre>{content}</pre>"
-
 
 @app.route('/backup', methods=['GET', 'POST'])
 def backup():
