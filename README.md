@@ -1,17 +1,15 @@
 # 🛡️ Şifreli Hasta Kayıt ve Yedekleme Sistemi
 
 Bu proje, Flask tabanlı web uygulamasıyla hasta kayıt yönetimi, kullanıcı giriş/kayıt sistemi ve veritabanı yedekleme işlevlerini barındırır. Uygulama Docker ile konteynerleştirilmiş, MySQL veritabanıyla entegre edilmiştir.
-Uygulama eğitim amaçlı tasarlanmıştır.
+
 
 ## 🚀 Özellikler
 
 - 👤 Kullanıcı kayıt ve giriş (şifre hashlenmiş şekilde)
 - 📋 Hasta bilgilerini ekleme ve listeleme
 - 🔍 TC Kimlik Numarası ile hasta arama
-- 🔒 IDOR (Insecure Direct Object Reference), SQL Injection, Lfi gibi güvenlik açıklarının gösterimi (bilinçli olarak bırakılmıştır)
 - 🧾 `mysqldump` ile manuel veritabanı yedekleme (Flask arayüzünden tetiklenebilir)
 - 🐳 Docker ile tam ortam kurulumu
-- http://localhost:5000/viewlog?file=backup.log adresini url'de aratarak Lfi zafiyeti gözlemlenebilir. 
 
 ---
 
@@ -38,10 +36,6 @@ templates/: Uygulamanın HTML şablonlarının bulunduğu klasördür.
 
     register.html: Yeni kullanıcı kaydı formu.
 
-    search.html: TC Kimlik No’ya göre hasta arama yapılan sayfa (SQL Injection zafiyeti barındırır).
-
-    patient.html: ID’ye göre hasta bilgisi gösterilir (IDOR zafiyeti barındırır).
-
     backups/: Yedek dosyalarının (backup_2025-06-28_...sql) saklandığı klasördür.
 
-README.md: Proje hakkında genel bilgileri içeren açıklama dosyasıdır. Kullanım adımları, içerdiği zafiyetler, docker komutları gibi bilgiler burada yer alır.
+README.md: Proje hakkında genel bilgileri içeren açıklama dosyasıdır. Kullanım adımları, docker komutları gibi bilgiler burada yer alır.
